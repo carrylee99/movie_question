@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影视剧知识问答 - 你真的看懂了吗？</title>
+    <link rel="stylesheet" href="quiz-styles/main.css">
+    <link rel="stylesheet" href="quiz-styles/animations.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 背景动画 -->
+        <div class="background-animation">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+
+        <!-- 主页面 -->
+        <div id="homePage" class="page active">
+            <div class="container">
+                <header class="main-header">
+                    <h1 class="title">
+                        <span class="title-main">影视剧知识问答</span>
+                        <span class="title-sub">你真的看懂了吗？</span>
+                    </h1>
+                    <p class="subtitle">挑战经典剧集，测试你的观剧功力！</p>
+                </header>
+
+                <div class="topics-grid">
+                    <div class="topic-card" data-topic="zhenhuanzhuan">
+                        <div class="topic-image">
+                        </div>
+                        <div class="topic-info">
+                            <h3>甄嬛传</h3>
+                            <p>宫斗经典，你能看透多少心机？</p>
+                            <div class="topic-stats">
+                                <span>🎯 10题</span>
+                                <span>⏱️ 8分钟</span>
+                            </div>
+                        </div>
+                        <div class="topic-overlay">
+                            <button class="start-btn">开始挑战</button>
+                        </div>
+                    </div>
+
+                    <div class="topic-card" data-topic="daming1566">
+                        <div class="topic-image">
+                        </div>
+                        <div class="topic-info">
+                            <h3>大明王朝1566</h3>
+                            <p>权谋巅峰，你懂官场博弈吗？</p>
+                            <div class="topic-stats">
+                                <span>🎯 10题</span>
+                                <span>⏱️ 8分钟</span>
+                            </div>
+                        </div>
+                        <div class="topic-overlay">
+                            <button class="start-btn">开始挑战</button>
+                        </div>
+                    </div>
+
+                    <div class="topic-card" data-topic="zhifou">
+                        <div class="topic-image">
+                        </div>
+                        <div class="topic-info">
+                            <h3>知否知否</h3>
+                            <p>古代生活，你了解多少细节？</p>
+                            <div class="topic-stats">
+                                <span>🎯 10题</span>
+                                <span>⏱️ 8分钟</span>
+                            </div>
+                        </div>
+                        <div class="topic-overlay">
+                            <button class="start-btn">开始挑战</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🎭</span>
+                        <span>经典剧集</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧠</span>
+                        <span>烧脑题目</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🏆</span>
+                        <span>等级评定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 问答页面 -->
+        <div id="quizPage" class="page">
+            <div class="container">
+                <div class="quiz-header">
+                    <button id="backBtn" class="back-btn">← 返回</button>
+                    <div class="quiz-info">
+                        <h2 id="topicTitle"></h2>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div id="progressFill" class="progress-fill"></div>
+                            </div>
+                            <span id="progressText" class="progress-text">1/8</span>
+                        </div>
+                    </div>
+                    <div class="score-display">
+                        <span>得分: <span id="currentScore">0</span></span>
+                    </div>
+                </div>
+
+                <div class="quiz-content">
+                    <div class="question-card">
+                        <div class="question-number">
+                            第 <span id="questionNumber">1</span> 题
+                        </div>
+                        <div class="question-text" id="questionText">
+                            <!-- 题目内容 -->
+                        </div>
+                        <div class="options-container" id="optionsContainer">
+                            <!-- 选项内容 -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button id="submitAnswer" class="submit-btn" disabled>提交答案</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果页面 -->
+        <div id="resultPage" class="page">
+            <div class="container">
+                <div class="result-content">
+                    <div class="result-animation">
+                        <div id="resultIcon" class="result-icon">🎉</div>
+                    </div>
+                    
+                    <div class="result-info">
+                        <h2 id="resultTitle">挑战完成！</h2>
+                        <div class="score-summary">
+                            <div class="final-score">
+                                <span class="score-label">最终得分</span>
+                                <span id="finalScore" class="score-value">0</span>
+                                <span class="score-total">/ <span id="totalScore">0</span></span>
+                            </div>
+                            <div id="resultRating" class="result-rating">
+                                <!-- 评级内容 -->
+                            </div>
+                        </div>
+                        
+                        <div id="resultDescription" class="result-description">
+                            <!-- 评价描述 -->
+                        </div>
+                        
+                        <div class="result-actions">
+                            <button id="retryBtn" class="retry-btn">再来一次</button>
+                            <button id="homeBtn" class="home-btn">返回首页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 答案反馈弹窗 -->
+        <div id="feedbackModal" class="modal">
+            <div class="modal-content">
+                <div id="feedbackIcon" class="feedback-icon">✓</div>
+                <div id="feedbackText" class="feedback-text">回答正确！</div>
+                <div id="feedbackExplanation" class="feedback-explanation">
+                    <!-- 解释内容 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz-js/data.js"></script>
+    <script src="quiz-js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>痛风智护网 - GoutCare Pro</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="container">
+                <h1 class="logo">痛风智护网</h1>
+                <nav class="nav">
+                    <button class="nav-btn active" data-tab="home">首页</button>
+                    <button class="nav-btn" data-tab="food">食物查询</button>
+                    <button class="nav-btn" data-tab="record">健康记录</button>
+                    <button class="nav-btn" data-tab="guide">阶段指导</button>
+                    <button class="nav-btn" data-tab="tools">工具</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main">
+            <!-- 首页 -->
+            <section id="home" class="tab-content active">
+                <div class="container">
+                    <div class="welcome-card">
+                        <h2>欢迎使用痛风智护网</h2>
+                        <p>专为痛风患者打造的全周期健康管理工具</p>
+                        <div class="stage-selector">
+                            <h3>请选择您当前的健康阶段：</h3>
+                            <div class="stage-buttons">
+                                <button class="stage-btn prevention" data-stage="prevention">预防期</button>
+                                <button class="stage-btn remission" data-stage="remission">缓解期</button>
+                                <button class="stage-btn initial" data-stage="initial">初期</button>
+                                <button class="stage-btn acute" data-stage="acute">急性发作期</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <h3>快速操作</h3>
+                        <div class="action-grid">
+                            <button class="action-card" onclick="switchTab('food')">
+                                <span class="icon">🍎</span>
+                                <span>食物查询</span>
+                            </button>
+                            <button class="action-card" onclick="switchTab('record')">
+                                <span class="icon">📊</span>
+                                <span>记录数据</span>
+                            </button>
+                            <button class="action-card emergency" onclick="showEmergencyGuide()">
+                                <span class="icon">🚨</span>
+                                <span>应急指导</span>
+                            </button>
+                            <button class="action-card" onclick="switchTab('tools')">
+                                <span class="icon">🔧</span>
+                                <span>实用工具</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 食物查询 -->
+            <section id="food" class="tab-content">
+                <div class="container">
+                    <div class="search-section">
+                        <h2>食物嘌呤查询</h2>
+                        <div class="search-bar">
+                            <input type="text" id="foodSearch" placeholder="搜索食物名称...">
+                            <button onclick="searchFood()">搜索</button>
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn low" data-filter="low">低嘌呤</button>
+                            <button class="filter-btn medium" data-filter="medium">中嘌呤</button>
+                            <button class="filter-btn high" data-filter="high">高嘌呤</button>
+                        </div>
+                    </div>
+                    
+                    <div id="foodResults" class="food-results">
+                        <!-- 搜索结果将在这里显示 -->
+                    </div>
+                    
+                    <div class="daily-intake">
+                        <h3>今日嘌呤摄入</h3>
+                        <div class="intake-display">
+                            <span id="dailyPurine">0</span> mg
+                            <div class="intake-bar">
+                                <div id="intakeProgress" class="intake-progress"></div>
+                            </div>
+                            <small>建议每日摄入量 < 150mg</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 健康记录 -->
+            <section id="record" class="tab-content">
+                <div class="container">
+                    <h2>健康记录</h2>
+                    
+                    <div class="record-tabs">
+                        <button class="record-tab-btn active" data-record-tab="uric">尿酸记录</button>
+                        <button class="record-tab-btn" data-record-tab="attack">发作记录</button>
+                        <button class="record-tab-btn" data-record-tab="diet">饮食记录</button>
+                    </div>
+                    
+                    <!-- 尿酸记录 -->
+                    <div id="uric" class="record-tab-content active">
+                        <div class="record-form">
+                            <h3>添加尿酸记录</h3>
+                            <form id="uricForm">
+                                <div class="form-group">
+                                    <label>日期</label>
+                                    <input type="date" id="uricDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>尿酸值 (μmol/L)</label>
+                                    <input type="number" id="uricValue" placeholder="例如：420" required>
+                                </div>
+                                <button type="submit">添加记录</button>
+                            </form>
+                        </div>
+                        
+                        <div class="record-list">
+                            <h3>历史记录</h3>
+                            <div id="uricRecords"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 发作记录 -->
+                    <div id="attack" class="record-tab-content">
+                        <div class="record-form">
+                            <h3>添加发作记录</h3>
+                            <form id="attackForm">
+                                <div class="form-group">
+                                    <label>日期时间</label>
+                                    <input type="datetime-local" id="attackDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>发作部位</label>
+                                    <select id="attackLocation" required>
+                                        <option value="">请选择</option>
+                                        <option value="大脚趾">大脚趾</option>
+                                        <option value="脚踝">脚踝</option>
+                                        <option value="膝盖">膝盖</option>
+                                        <option value="手指">手指</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>疼痛等级 (1-10)</label>
+                                    <div class="pain-scale">
+                                        <input type="range" id="painLevel" min="1" max="10" value="5">
+                                        <div class="pain-display">
+                                            <span id="painValue">5</span>/10
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>可能诱因</label>
+                                    <textarea id="attackTrigger" placeholder="例如：饮酒、高嘌呤饮食、劳累等"></textarea>
+                                </div>
+                                <button type="submit">添加记录</button>
+                            </form>
+                        </div>
+                        
+                        <div class="record-list">
+                            <h3>发作历史</h3>
+                            <div id="attackRecords"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 饮食记录 -->
+                    <div id="diet" class="record-tab-content">
+                        <div class="record-form">
+                            <h3>今日饮食</h3>
+                            <div id="todayDiet"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 阶段指导 -->
+            <section id="guide" class="tab-content">
+                <div class="container">
+                    <h2>阶段指导</h2>
+                    <div id="stageGuide" class="stage-guide">
+                        <!-- 根据用户选择的阶段显示相应指导 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 工具 -->
+            <section id="tools" class="tab-content">
+                <div class="container">
+                    <h2>实用工具</h2>
+                    
+                    <div class="tools-grid">
+                        <!-- 尿酸单位换算 -->
+                        <div class="tool-card">
+                            <h3>尿酸单位换算</h3>
+                            <div class="converter">
+                                <div class="form-group">
+                                    <label>μmol/L</label>
+                                    <input type="number" id="umolInput" placeholder="输入数值">
+                                </div>
+                                <div class="convert-arrow">⇅</div>
+                                <div class="form-group">
+                                    <label>mg/dl</label>
+                                    <input type="number" id="mgInput" placeholder="输入数值">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 疼痛等级评估 -->
+                        <div class="tool-card">
+                            <h3>疼痛等级评估</h3>
+                            <div class="pain-assessment">
+                                <div class="pain-scale-visual">
+                                    <div class="pain-levels">
+                                        <div class="pain-level" data-level="1">1</div>
+                                        <div class="pain-level" data-level="2">2</div>
+                                        <div class="pain-level" data-level="3">3</div>
+                                        <div class="pain-level" data-level="4">4</div>
+                                        <div class="pain-level" data-level="5">5</div>
+                                        <div class="pain-level" data-level="6">6</div>
+                                        <div class="pain-level" data-level="7">7</div>
+                                        <div class="pain-level" data-level="8">8</div>
+                                        <div class="pain-level" data-level="9">9</div>
+                                        <div class="pain-level" data-level="10">10</div>
+                                    </div>
+                                </div>
+                                <div id="painDescription" class="pain-description">
+                                    点击上方数字评估疼痛等级
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 应急指导弹窗 -->
+        <div id="emergencyModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>🚨 急性发作应急指导</h2>
+                <div class="emergency-steps">
+                    <div class="step">
+                        <h3>1. 立即休息</h3>
+                        <p>停止活动，抬高患肢，避免负重</p>
+                    </div>
+                    <div class="step">
+                        <h3>2. 冷敷处理</h3>
+                        <p>用冰袋或冷毛巾敷患处15-20分钟</p>
+                    </div>
+                    <div class="step">
+                        <h3>3. 药物治疗</h3>
+                        <p>按医嘱服用止痛药物（如秋水仙碱）</p>
+                    </div>
+                    <div class="step">
+                        <h3>4. 大量饮水</h3>
+                        <p>每日饮水量增加至2000-3000ml</p>
+                    </div>
+                    <div class="step">
+                        <h3>5. 及时就医</h3>
+                        <p>症状严重或持续不缓解时立即就医</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>""

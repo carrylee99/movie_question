@@ -1,0 +1,527 @@
+/* 动画效果 */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateY(-10px) translateX(5px) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) translateX(0px) rotate(180deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-10px) translateX(-5px) rotate(270deg);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-8px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(8px);
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(102, 126, 234, 0.8), 
+            0 0 30px rgba(102, 126, 234, 0.6),
+            0 0 40px rgba(102, 126, 234, 0.4);
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-200deg) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes flipIn {
+    from {
+        opacity: 0;
+        transform: perspective(400px) rotateX(90deg);
+    }
+    40% {
+        transform: perspective(400px) rotateX(-20deg);
+    }
+    60% {
+        transform: perspective(400px) rotateX(10deg);
+    }
+    80% {
+        transform: perspective(400px) rotateX(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(400px) rotateX(0deg);
+    }
+}
+
+@keyframes rubberBand {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.3);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.3);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+
+/* 页面切换动画 */
+.page-enter {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.page-exit {
+    animation: slideInDown 0.4s ease-in;
+}
+
+/* 选项动画 */
+.option-enter {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.option-select {
+    animation: pulse 0.4s ease-out;
+}
+
+.option-correct-feedback {
+    animation: pulse 0.6s ease-out, glow 0.8s ease-out;
+}
+
+.option-incorrect-feedback {
+    animation: shake 0.6s ease-out;
+}
+
+/* 分数动画 */
+.score-increment {
+    animation: bounce 0.8s ease-out;
+}
+
+.score-final {
+    animation: heartbeat 1.5s ease-in-out;
+}
+
+/* 进度条动画 */
+.progress-update {
+    transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 结果页面动画 */
+.result-enter {
+    animation: fadeIn 1s ease-out, slideInUp 1s ease-out;
+}
+
+.result-icon-success {
+    animation: bounce 2s ease-in-out infinite;
+    color: #28a745;
+}
+
+.result-icon-good {
+    animation: pulse 2s ease-in-out infinite;
+    color: #feca57;
+}
+
+.result-icon-average {
+    animation: float 3s ease-in-out infinite;
+    color: #48dbfb;
+}
+
+.result-icon-poor {
+    animation: shake 0.8s ease-out;
+    color: #dc3545;
+}
+
+/* 卡片悬停动画 */
+.topic-card-hover {
+    animation: pulse 0.4s ease-out;
+}
+
+/* 按钮点击动画 */
+.button-click {
+    animation: rubberBand 0.3s ease-out;
+}
+
+/* 加载动画 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    animation: spin 1s linear infinite;
+}
+
+/* 文字打字机效果 */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #667eea;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end), blink 0.75s step-end infinite;
+}
+
+/* 粒子效果 */
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: particle-float 12s linear infinite;
+}
+
+/* 成功庆祝动画 */
+@keyframes confetti {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ff6b6b;
+    animation: confetti 4s linear infinite;
+}
+
+.confetti:nth-child(2) {
+    background: #4ecdc4;
+    animation-delay: 0.3s;
+    width: 10px;
+    height: 10px;
+}
+
+.confetti:nth-child(3) {
+    background: #45b7d1;
+    animation-delay: 0.6s;
+    width: 8px;
+    height: 8px;
+}
+
+.confetti:nth-child(4) {
+    background: #f9ca24;
+    animation-delay: 0.9s;
+    width: 14px;
+    height: 14px;
+}
+
+.confetti:nth-child(5) {
+    background: #6c5ce7;
+    animation-delay: 1.2s;
+    width: 9px;
+    height: 9px;
+}
+
+/* 特殊效果动画 */
+@keyframes neonGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px currentColor,
+            0 0 10px currentColor,
+            0 0 15px currentColor;
+    }
+    50% {
+        text-shadow: 
+            0 0 10px currentColor,
+            0 0 20px currentColor,
+            0 0 30px currentColor,
+            0 0 40px currentColor;
+    }
+}
+
+.neon-text {
+    animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes morphing {
+    0%, 100% {
+        border-radius: 24px;
+    }
+    25% {
+        border-radius: 50px 24px 24px 24px;
+    }
+    50% {
+        border-radius: 50px;
+    }
+    75% {
+        border-radius: 24px 50px 24px 24px;
+    }
+}
+
+.morphing-card {
+    animation: morphing 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.breathing {
+    animation: breathe 3s ease-in-out infinite;
+}
+
+/* 响应式动画优化 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .floating-element,
+    .particle,
+    .confetti {
+        display: none !important;
+    }
+}
+
+/* 触摸设备动画优化 */
+@media (hover: none) and (pointer: coarse) {
+    .topic-card:hover {
+        animation: none;
+    }
+    
+    .option:hover {
+        animation: none;
+    }
+    
+    .topic-card:active {
+        animation: rubberBand 0.2s ease-out;
+    }
+    
+    .option:active {
+        animation: pulse 0.2s ease-out;
+    }
+}
+
+/* 高性能模式 */
+@media (prefers-reduced-data: reduce) {
+    .particle,
+    .confetti,
+    .floating-element {
+        display: none !important;
+    }
+    
+    * {
+        animation-duration: 0.3s !important;
+    }
+}

@@ -95,5 +95,5 @@
 个人开发项目，基于产品文档实现的纯前端痛风健康管理平台。
 
 ---
-
-*最后更新：2024年12月*
+本项目由阿里云ESA提供加速、计算和保护
+<img width="7534" height="844" alt="file_1766585954975_786" src="https://github.com/user-attachments/assets/65b4b394-79c6-4d4b-9885-124fcdf5134e" />
